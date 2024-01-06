@@ -2,4 +2,12 @@
     <string name="app_name">QuickNote</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="priority">Priority : </string>
+    <string name="add_quick_note">add quick note</string>
+    <string name="title">Title</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="notes">Notes</string>
+    <string name="low">low</string>
+    <string name="medium">medium</string>
+    <string name="high">high</string>
 </resources>

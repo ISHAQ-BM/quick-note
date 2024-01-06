@@ -4,7 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.example.quicknote.core.DATABASE_NAME
 import com.example.quicknote.data.database.NoteDao
-import com.example.quicknote.data.database.NotesDatabase
+import com.example.quicknote.data.database.NoteDatabase
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,18 +19,20 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNoteDao(notesDatabase: NotesDatabase): NoteDao {
+    fun provideNoteDao(notesDatabase: NoteDatabase): NoteDao {
         return notesDatabase.noteDao()
     }
 
     @Provides
     @Singleton
-    fun provideNotesDatabase(@ApplicationContext context: Context): NotesDatabase {
+    fun provideNotesDatabase(@ApplicationContext context: Context): NoteDatabase {
         return Room.databaseBuilder(
             context,
-            NotesDatabase::class.java,
+            NoteDatabase::class.java,
             DATABASE_NAME
         ).build()
     }
+
+
 
 }
