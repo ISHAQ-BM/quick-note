@@ -5,7 +5,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.quicknote.core.TABLE_NAME
-import java.sql.Timestamp
 
 @Entity(tableName = TABLE_NAME)
 data class Note (
@@ -14,6 +13,6 @@ data class Note (
     val subTitle: String,
     val description: String,
     val priority: String,
-    @ColumnInfo(name = "created_date") val createdDate:String
+    @ColumnInfo(name = "created_at") val createdAt:String
 
     )

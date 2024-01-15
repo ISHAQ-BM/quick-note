@@ -14,9 +14,19 @@ class NoteViewModel @Inject constructor(
 ):ViewModel() {
 
 
+
+    fun getAll()=repository.getAll()
     fun addNote(note:Note)=viewModelScope.launch {
         repository.addNote(note)
     }
 
+    fun updateNote(note:Note)=viewModelScope.launch {
+        repository.updateNote(note)
+    }
+
     fun getNote(id:Int)=repository.getNote(id)
+
+    fun searchNotes(query:String?)= repository.searchNotes(query)
+
+
 }

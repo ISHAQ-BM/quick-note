@@ -22,4 +22,10 @@ class NoteRepositoryImpl @Inject constructor(
     override suspend fun addNote(note: Note) {
         noteDao.insert(note)
     }
+
+    override suspend fun updateNote(note: Note) {
+        noteDao.update(note)
+    }
+
+    override fun searchNotes(query: String?) = noteDao.searchNotes(query).asLiveData()
 }

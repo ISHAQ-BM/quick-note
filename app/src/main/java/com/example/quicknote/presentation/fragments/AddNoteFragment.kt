@@ -61,7 +61,7 @@ class AddNoteFragment : Fragment() {
                         subTitle = subtitle,
                         description = notes,
                         priority = priority,
-                        createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+                        createdAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
                     )
                 )
                 findNavController().popBackStack()
@@ -79,6 +79,40 @@ class AddNoteFragment : Fragment() {
                     "low" -> binding?.priorityLow?.isChecked=true
                     "medium" -> binding?.priorityMedium?.isChecked=true
                     "high" -> binding?.priorityHigh?.isChecked=true
+                }
+            }
+
+            binding?.done?.setOnClickListener {
+                val title=binding?.title?.text?.trim().toString()
+                val subtitle=binding?.subtitle?.text?.trim().toString()
+                val notes=binding?.notes?.text?.trim().toString()
+                val priority=view.findViewById<RadioButton>(binding?.priorities?.checkedRadioButtonId ?: -1).text.toString()
+
+                if (title.isEmpty()){
+                    binding?.inputLayoutTitle?.error="Required."
+                }else if (subtitle.isEmpty()) {
+                    binding?.inputLayoutTitle?.error=null
+                    binding?.inputLayoutTitle?.clearFocus()
+                    binding?.inputLayoutSubtitle?.error = "Required."
+                }else if (notes.isEmpty()){
+                    binding?.inputLayoutSubtitle?.error=null
+                    binding?.inputLayoutSubtitle?.clearFocus()
+                    binding?.inputLayoutNotes?.error = "Required."
+                }else {
+                    binding?.inputLayoutNotes?.error = null
+                    binding?.inputLayoutNotes?.clearFocus()
+                    viewModel.updateNote(
+                        Note(
+                            id = args.id,
+                            title = title,
+                            subTitle = subtitle,
+                            description = notes,
+                            priority = priority,
+                            createdAt = LocalDateTime.now()
+                                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+                        )
+                    )
+                    findNavController().popBackStack()
                 }
             }
 

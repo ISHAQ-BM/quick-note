@@ -9,6 +9,9 @@ interface NoteRepository {
     fun getNote(id:Int):LiveData<Note>
     suspend fun deleteNote(note:Note)
     suspend fun addNote(note:Note)
+    suspend fun updateNote(note:Note)
+
+    fun searchNotes(query:String?):LiveData<List<Note>>
 
 
 }
