@@ -5,13 +5,13 @@ import com.example.quicknote.domain.model.Note
 import kotlinx.coroutines.flow.Flow
 
 interface NoteRepository {
-    fun getAll(): Flow<List<Note>>
-    fun getNote(id:Int):LiveData<Note>
+    fun getAllNotes(): Flow<List<Note>>
     suspend fun deleteNote(note:Note)
-    suspend fun addNote(note:Note)
-    suspend fun updateNote(note:Note)
+    suspend fun upsert(note:Note)
 
-    fun searchNotes(query:String?):LiveData<List<Note>>
+
+
+    fun searchNotes(query:String?):Flow<List<Note>>
 
 
 }

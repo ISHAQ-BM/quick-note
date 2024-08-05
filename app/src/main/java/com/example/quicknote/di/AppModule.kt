@@ -3,8 +3,8 @@ package com.example.quicknote.di
 import android.content.Context
 import androidx.room.Room
 import com.example.quicknote.core.DATABASE_NAME
-import com.example.quicknote.data.database.NoteDao
-import com.example.quicknote.data.database.NoteDatabase
+import com.example.quicknote.data.source.local.database.NoteDao
+import com.example.quicknote.data.source.local.database.NoteDatabase
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -30,7 +30,8 @@ object AppModule {
             context,
             NoteDatabase::class.java,
             DATABASE_NAME
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .allowMainThreadQueries().build()
     }
 
 

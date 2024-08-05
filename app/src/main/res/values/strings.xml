@@ -11,4 +11,9 @@
     <string name="medium">medium</string>
     <string name="high">high</string>
     <string name="search">Search</string>
+    <string name="delete">Delete</string>
+    <string name="are_you_sure_want_to_delete_this_note">Are you sure want to delete \nthis note ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="save">Save</string>
 </resources>
